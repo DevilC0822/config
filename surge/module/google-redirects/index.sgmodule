@@ -1,0 +1,7 @@
+#!name=google
+#!desc=解决国内地区safari默认搜索引擎为谷歌时访问的域名为google.cn的问题
+#!category=Redirects
+# 更新日期：2024.12.09
+
+[URL Rewrite]
+^http://www\.google\.cn http://www.google.com 302
