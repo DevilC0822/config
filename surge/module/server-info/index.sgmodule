@@ -1,0 +1,12 @@
+#!name=服务器监控
+#!desc= 监控 VPS 流量信息和处理器、内存占用情况
+#!howto= 将模块内容复制到本地后根据自己 VPS IP 地址及端口修改 http://127.0.0.1:7122
+#!category=面板模块
+#!arguments=url:主机地址:端口,name:面板标题
+
+
+[Panel]
+Serverinfo = script-name= 服务器监控,update-interval=3600
+
+[Script]
+服务器监控 = type=generic,script-path=https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/script/serverinfo.js, argument = url={{{url}}}&name={{{name}}}&icon=party.popper
