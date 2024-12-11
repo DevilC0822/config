@@ -9,4 +9,4 @@
 Serverinfo = script-name= 服务器监控,update-interval=3600
 
 [Script]
-服务器监控 = type=generic,script-path=https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/script/serverinfo.js, argument = url={{{url}}}&name={{{name}}}&icon=party.popper
+服务器监控 = type=generic,script-path=https://raw.githubusercontent.com/DevilC0822/config/refs/heads/main/surge/module/server-info/index.js, argument = url={{{url}}}&name={{{name}}}&icon=party.popper
