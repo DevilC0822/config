@@ -5,3 +5,6 @@
 
 [URL Rewrite]
 ^http://www\.google\.cn http://www.google.com 302
+
+[MITM]
+hostname = www.google.cn
