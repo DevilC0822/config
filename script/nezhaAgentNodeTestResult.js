@@ -28,7 +28,6 @@
     src="https://cdn.jsdelivr.net/gh/DevilC0822/config/script/nezhaAgentNodeTestResult.js"></script>
  * @url https://github.com/DevilC0822/config/blob/refs/heads/main/script/nezhaAgentNodeTestResult.js
  */
-
 const scriptBsh = {
     NodeQuality: 'bash <(curl -sL https://run.NodeQuality.com)',
     '融合怪': 'bash <(wget -qO- --no-check-certificate https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh)',
@@ -118,8 +117,14 @@ const init = () => {
                         section.style.display = 'none';
                     });
                     const scriptDiv = document.getElementById(`script-${tabId}`);
+
                     if (scriptDiv) {
+                        const scriptSection = document.getElementById('script-section');
+                        scriptSection.style.display = 'block';
                         scriptDiv.style.display = 'block';
+                    } else {
+                        const scriptSection = document.getElementById('script-section');
+                        scriptSection.style.display = 'none';
                     }
                     const mainSections = document.querySelectorAll('[data-main-section="true"]');
                     mainSections.forEach(section => {
@@ -156,20 +161,21 @@ const init = () => {
         // 脚本地址
         const scriptSection = document.createElement('section');
         scriptSection.setAttribute('class', 'rounded-lg border text-card-foreground shadow-lg shadow-neutral-200/40 dark:shadow-none bg-card/70');
+        scriptSection.setAttribute('id', 'script-section');
         scriptSection.style.padding = '16px';
         Object.keys(current).filter(key => key !== 'remark').forEach((key, index) => {
             const _key = Object.hasOwn(scriptBsh, current?.[key]?.script) ? current?.[key]?.script : Object.hasOwn(scriptBsh, key) ? key : '';
             if (!_key) {
                 return;
             }
-            scriptSection.setAttribute('data-script-section', 'true');
-            scriptSection.setAttribute('id', `script-${_key}`);
-            const scriptDiv = document.createElement('div');
-            scriptDiv.style.display = index === 0 ? 'block' : 'none';
+            const contentDiv = document.createElement('div');
+            contentDiv.style.display = index === 0 ? 'block' : 'none';
+            contentDiv.setAttribute('data-script-section', 'true');
+            contentDiv.setAttribute('id', `script-${_key}`);
             const scriptP = document.createElement('p');
             scriptP.textContent = _key;
             scriptP.style.fontWeight = 'bold';
-            scriptDiv.appendChild(scriptP);
+            contentDiv.appendChild(scriptP);
             const scriptTextDiv = document.createElement('div');
             scriptTextDiv.setAttribute('class', 'flex items-center gap-2');
             const scriptText = document.createElement('span');
@@ -183,7 +189,7 @@ const init = () => {
             scriptButton.style.borderRadius = '4px';
             scriptButton.style.fontSize = '1em'; // 可以调整图标大小
             scriptTextDiv.appendChild(scriptButton);
-            scriptDiv.appendChild(scriptTextDiv);
+            contentDiv.appendChild(scriptTextDiv);
             scriptButton.addEventListener('click', () => {
                 // 复制的内容会被 转义 例如 < 会被转义为 &lt; 避免转义
                 const textToCopy = scriptText.innerText;
@@ -208,7 +214,7 @@ const init = () => {
                     tryCopyLegacy(textToCopy, scriptText, scriptButton, originalIcon, successIconSvg, failureIcon);
                 }
             });
-            scriptSection.appendChild(scriptDiv);
+            scriptSection.appendChild(contentDiv);
         });
         mainRoot.appendChild(scriptSection);
 
