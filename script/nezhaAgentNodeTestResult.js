@@ -23,7 +23,9 @@
     // 其他服务器节点...
   };
   </script>
-  <script src="https://raw.githubusercontent.com/DevilC0822/config/refs/heads/main/script/nezhaAgentNodeTestResult.js"></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/gh/DevilC0822/config/script/nezhaAgentNodeTestResult.js"></script>
  * @url https://github.com/DevilC0822/config/blob/refs/heads/main/script/nezhaAgentNodeTestResult.js
  */
 
