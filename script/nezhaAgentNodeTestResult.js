@@ -156,13 +156,13 @@ const init = () => {
         // 脚本地址
         const scriptSection = document.createElement('section');
         scriptSection.setAttribute('class', 'rounded-lg border text-card-foreground shadow-lg shadow-neutral-200/40 dark:shadow-none bg-card/70');
-        scriptSection.setAttribute('data-script-section', 'true');
         scriptSection.style.padding = '16px';
         Object.keys(current).filter(key => key !== 'remark').forEach((key, index) => {
             const _key = Object.hasOwn(scriptBsh, current?.[key]?.script) ? current?.[key]?.script : Object.hasOwn(scriptBsh, key) ? key : '';
             if (!_key) {
                 return;
             }
+            scriptSection.setAttribute('data-script-section', 'true');
             scriptSection.setAttribute('id', `script-${_key}`);
             const scriptDiv = document.createElement('div');
             scriptDiv.style.display = index === 0 ? 'block' : 'none';
